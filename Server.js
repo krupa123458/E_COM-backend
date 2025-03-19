@@ -4,9 +4,8 @@ const connectDB = require('./config/db');
 const router = require('./routes/authRoutes');
 const cartRouter = require('./routes/cartRoutes');
 const app= express();
+const allowedOrigins=["e-com-frontend-kappa.vercel.app"]
 
-const allowedOrigins();
-const allowedOrigins=[e-com-frontend-pzny5m7hf-krupa-ganiger-s-projects.vercel.appe-com-frontend-kappa.vercel.app,e-com-frontend-kappa.vercel.app]
 app.use(cors(
     {
         origin: function (origin, callback) {

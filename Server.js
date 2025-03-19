@@ -4,7 +4,21 @@ const connectDB = require('./config/db');
 const router = require('./routes/authRoutes');
 const cartRouter = require('./routes/cartRoutes');
 const app= express();
-app.use(cors())
+
+const allowedOrigins();
+const allowedOrigins=[e-com-frontend-pzny5m7hf-krupa-ganiger-s-projects.vercel.appe-com-frontend-kappa.vercel.app,e-com-frontend-kappa.vercel.app]
+app.use(cors(
+    {
+        origin: function (origin, callback) {
+          if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+          } else {
+            callback(new Error("Not allowed by CORS"));
+          }
+        },
+        credentials: true, // Allows cookies and authentication headers if needed
+      }
+))
 app.use(express.json())
 app.use("/auth",router)
 app.use("/cart",cartRouter)
@@ -13,7 +27,7 @@ connectDB()
 app.get('/',(req,res)=>{
     res.send("hello world")
 })
-const port=7008
+const port=5000
 
 app.listen(port,()=>{
     console.log(`server is running on http://localhost:${port}`)
